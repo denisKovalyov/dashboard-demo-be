@@ -1,0 +1,54 @@
+{
+  "name": "dashboard-demo-be",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "migrate": "node --loader ts-node/esm db/migrate.ts",
+    "seed": "node --loader ts-node/esm db/seed.ts",
+    "db:init": "npm run migrate && npm run seed",
+    "start": "node dist/server.js",
+    "dev": "nodemon --watch src --ext ts --exec \"node --loader ts-node/esm src/server.ts\"",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write src",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denisKovalyov/dashboard-demo-be.git"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=11.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/denisKovalyov/dashboard-demo-be/issues"
+  },
+  "homepage": "https://github.com/denisKovalyov/dashboard-demo-be#readme",
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "better-sqlite3": "^12.4.1",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.6.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^24.9.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.38.0",
+    "eslint-config-prettier": "^10.1.8",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.3"
+  }
+}

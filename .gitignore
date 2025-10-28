@@ -1,0 +1,18 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# Build
+dist/
+
+# Database
+db/database.sqlite
+
+# Environment
+.env
+
+# Editor
+.vscode/
+.idea/
