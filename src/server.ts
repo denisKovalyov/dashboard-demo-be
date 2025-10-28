@@ -3,11 +3,21 @@ import cors from '@fastify/cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
+import { registerModules } from './modules/index.js';
+
 const start = async () => {
-  const app = Fastify({ logger: true });
+  const app = Fastify({
+    logger: true,
+    ajv: {
+      customOptions: { coerceTypes: true },
+    },
+  });
+
   await app.register(cors, {
     origin: process.env.CORS_ORIGIN || '*',
   });
+
+  await registerModules(app);
 
   // Health check
   app.get('/', async () => ({ status: 'ok' }));

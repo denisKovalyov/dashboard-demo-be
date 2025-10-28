@@ -9,12 +9,13 @@ CREATE TABLE IF NOT EXISTS widgets (
     dashboard_id INTEGER NOT NULL,
     type TEXT NOT NULL CHECK(type IN ('lineChart','barChart','text')),
     position INTEGER NOT NULL,
-    data TEXT,
+    data TEXT NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (dashboard_id) REFERENCES dashboards(id) ON DELETE CASCADE,
     CHECK (
-        (type = 'text') OR
+        (type = 'text' AND typeof(data) = 'text') OR
         (type IN ('lineChart','barChart') AND json_valid(data))
-    )
+    ),
+    UNIQUE (dashboard_id, position)
 );
