@@ -7,9 +7,6 @@ pnpm-lock.yaml
 # Build
 dist/
 
-# Database
-db/database.sqlite
-
 # Environment
 .env
 
