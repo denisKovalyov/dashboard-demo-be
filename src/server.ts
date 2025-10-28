@@ -22,7 +22,11 @@ const start = async () => {
   // Health check
   app.get('/', async () => ({ status: 'ok' }));
 
-  const PORT = Number(process.env.PORT) || 3000;
+  const PORT = Number(process.env.PORT);
+  if (!PORT) {
+    throw new Error('PORT environment variable is missing!');
+  }
+
   const HOST = process.env.HOST || 'localhost';
 
   await app.listen({ port: PORT, host: HOST });
