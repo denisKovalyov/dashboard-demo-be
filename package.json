@@ -8,7 +8,7 @@
     "migrate": "node --loader ts-node/esm db/migrate.ts",
     "seed": "node --loader ts-node/esm db/seed.ts",
     "db:init": "npm run migrate && npm run seed",
-    "start": "node dist/server.js",
+    "start": "node dist/src/server.js",
     "dev": "nodemon --watch src --ext ts --exec \"node --loader ts-node/esm src/server.ts\"",
     "lint": "eslint src --ext .ts",
     "lint:fix": "eslint src --ext .ts --fix",
