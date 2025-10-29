@@ -1,15 +1,13 @@
 import { faker } from '@faker-js/faker';
 import { ChartData } from '../types';
 
-export function generateRandomChartData(points = 7, datasetsCount = 2): ChartData {
-  // Labels for X-axis: last N days
+export function generateRandomChartData(points = 7): ChartData {
   const labels = Array.from({ length: points }, (_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - (points - 1 - i));
     return d.toLocaleDateString();
   });
 
-  // Expanded label pool for datasets
   const datasetLabels = [
     'Revenue',
     'Sales',
@@ -23,7 +21,8 @@ export function generateRandomChartData(points = 7, datasetsCount = 2): ChartDat
     'Traffic',
   ];
 
-  // Generate datasets
+  const datasetsCount = faker.number.int({ min: 1, max: 7 });
+
   const datasets = Array.from({ length: datasetsCount }, () => ({
     label: faker.helpers.arrayElement(datasetLabels),
     data: Array.from({ length: points }, () => faker.number.float({ min: 10, max: 100 })),
